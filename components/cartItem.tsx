@@ -14,19 +14,25 @@ interface CartItemProps {
 const CartItemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 100px));
+  max-width: 400px;
+  margin: 0 auto;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   background: white;
   margin-bottom: 8px;
   padding: 8px;
   border-radius: 4px;
   height: 90px;
   position: relative;
+
+  @media (min-width: 1024px) {
+    max-width: none;
+  }
 `;
 
 const ItemPhoto = styled.img<{ src: string; alt?: string }>`
-  width: 100%;
-  height: 100%;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   pointer-events: none;
 `;

@@ -14,7 +14,7 @@ const SidebarContainer = styled(motion.div)`
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 100%;
   min-height: 100dvh;
   max-height: 100dvh;
   overflow-x: hidden;
@@ -23,6 +23,10 @@ const SidebarContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: 1024px) {
+    width: 400px;
+  }
 `;
 
 const Header = styled.div`
@@ -58,6 +62,7 @@ const TotalContainer = styled.div`
   justify-content: space-around;
   gap: 0.5rem;
   width: 100%;
+  max-width: 400px;
 `;
 
 const Total = styled.p`

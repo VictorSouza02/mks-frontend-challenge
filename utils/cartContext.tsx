@@ -58,13 +58,17 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const decreaseQuantity = (name: string) => {
-    setCartItems((prevCartItems) =>
-      prevCartItems.map((item) =>
-        item.name === name && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
+    const itemIndex = cartItems.findIndex((item) => item.name === name);
+
+    if (itemIndex !== -1) {
+      if (cartItems[itemIndex].quantity > 1) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[itemIndex].quantity -= 1;
+        setCartItems(updatedCartItems);
+      } else {
+        removeItem(name);
+      }
+    }
   };
 
   const removeItem = (name: string) => {
