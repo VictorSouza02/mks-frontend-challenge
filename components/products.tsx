@@ -53,7 +53,7 @@ const Products: React.FC = () => {
         // Atraso para poder ver o skeleton
         setTimeout(() => {
           fetchProducts().then(resolve).catch(reject);
-        }, 100000);
+        }, 1000);
       });
     },
   });
