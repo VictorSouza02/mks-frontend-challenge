@@ -1,7 +1,11 @@
 import { ShoppingCart } from "lucide-react";
-import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useCart } from "@/utils/cartContext";
+
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -62,7 +66,9 @@ const CartAmount = styled.span`
   text-align: left;
 `;
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
+  const { cartItems } = useCart();
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -72,6 +78,7 @@ const Header: React.FC = () => {
         </TitlesContainer>
 
         <CartButton
+          onClick={toggleSidebar}
           whileHover={{
             scale: 0.97,
             opacity: 0.8,
@@ -80,7 +87,7 @@ const Header: React.FC = () => {
         >
           <ShoppingCart />
 
-          <CartAmount>0</CartAmount>
+          <CartAmount>{cartItems.length}</CartAmount>
         </CartButton>
       </HeaderContent>
     </HeaderContainer>

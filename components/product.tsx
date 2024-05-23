@@ -2,6 +2,7 @@ import { ShoppingBag } from "lucide-react";
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useCart } from "@/utils/cartContext";
 
 interface ProductProps {
   id: number;
@@ -105,17 +106,23 @@ const BuyButton = styled(motion.button)`
 `;
 
 const Product: React.FC<ProductProps> = ({
+  id,
   name,
-  brand,
   description,
   photo,
   price,
 }) => {
+  const { addToCart } = useCart();
+
   let formattedPrice =
     "R$" +
     Number(price).toLocaleString("pt-BR", {
       maximumFractionDigits: 0,
     });
+
+  const handleAddToCart = () => {
+    addToCart({ id, name, photo, price, quantity: 1 });
+  };
 
   return (
     <Card>
@@ -132,6 +139,7 @@ const Product: React.FC<ProductProps> = ({
         <Description>{description}</Description>
       </CardBody>
       <BuyButton
+        onClick={handleAddToCart}
         whileHover={{
           opacity: 0.8,
           transition: { duration: 0.3 },
