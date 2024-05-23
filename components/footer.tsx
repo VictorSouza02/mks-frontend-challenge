@@ -10,15 +10,20 @@ const FooterContainer = styled.footer`
   justify-content: center;
   background-color: #eeeeee;
   color: black;
+`;
+
+const FooterText = styled.span`
+  font-size: 12px;
+  font-weight: 300;
   text-align: center;
 `;
 
 const Footer: React.FC = () => {
   return (
     <FooterContainer>
-      <span>
+      <FooterText>
         MKS sistemas © Todos os direitos reservados &#40;Víctor Souza&#41;
-      </span>
+      </FooterText>
     </FooterContainer>
   );
 };

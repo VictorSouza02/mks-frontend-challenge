@@ -38,7 +38,15 @@ const ProductsContainer = styled.div`
   justify-content: center;
   gap: 16px;
   padding: 16px 0px;
-  grid-template-columns: repeat(1, minmax(0, 250px));
+  grid-template-columns: repeat(1, minmax(0, 100%));
+
+  @media (min-width: 500px) {
+    grid-template-columns: repeat(2, minmax(0, 250px));
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 250px));
+  }
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(0, 250px));
